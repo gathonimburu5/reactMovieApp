@@ -1,6 +1,17 @@
 import "../css/Favorites.css"
+import { UseMovieContext } from "../contexts/MovieContext";
+import MovieDetails from "../components/MovieDetails";
 
 function Favorite(){
+    const {favorites} = UseMovieContext()
+    if(favorites){
+        <div className="favorites">
+            <h4>Your Favorites Movies</h4>
+            <div className="movies-grid">
+                {favorites.map((movie) => (<MovieDetails movie={movie} key={movie.id} />))}
+            </div>
+        </div>
+    }
     return(
         <div className="favorites-empty">
             <h4>No Favorite Movie Yet</h4>
