@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { MovieProvider } from './contexts/MovieContext';
 
-function App() {
+const App = () => {
   return (
     <MovieProvider>
       <Navbar />

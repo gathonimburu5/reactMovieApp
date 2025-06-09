@@ -4,7 +4,7 @@ import { searchMovies, getPopularMovies } from "../services/api";
 import "../css/Home.css"
 
 
-function Home(){
+const Home = () => {
     const [serchQuery, setSearchQuery] = useState("");
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);

@@ -2,7 +2,7 @@ import "../css/Favorites.css"
 import { UseMovieContext } from "../contexts/MovieContext";
 import MovieDetails from "../components/MovieDetails";
 
-function Favorite(){
+const Favorite = () => {
     const {favorites} = UseMovieContext();
     if(favorites){
         return(
