@@ -24,7 +24,6 @@ function Home(){
                 setLoadoing(false);
             }
         }
-
         loadPopularMovies();
     }, [])
 
@@ -33,10 +32,12 @@ function Home(){
         if(!serchQuery.trim()) return
         if(loading) return
 
+        setLoadoing(true);
         try{
             const searchResult = await searchMovies(serchQuery);
+            console.log(searchResult);
             setMovies(searchResult);
-            setError(null)
+            setError(null);
         }catch(err){
             console.log(err);
             setError("Failed to search movie...");
