@@ -14,7 +14,7 @@ function Home(){
         const loadPopularMovies = async () => {
             try{
                 const popularMovies = await getPopularMovies();
-                console.log(popularMovies);
+                //console.log(popularMovies);
                 setMovies(popularMovies);
             }catch(err){
                 console.log(err)

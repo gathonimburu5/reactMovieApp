@@ -19,13 +19,17 @@ export const MovieProvider = ({children}) => {
     const addToFavorite = (movie) => {
         setFavorites(prev => [...prev, movie]);
     }
+
     const removeFromFavorite = (movieId) => {
         setFavorites(prev => prev.filter(movie => movie.id !== movieId));
     }
+
     const isFavorite = (movieId) => {
         return favorites.some(movie => movie.id === movieId);
     }
+
     const value = {favorites, addToFavorite, removeFromFavorite, isFavorite}
+
     return (
         <MovieContext.Provider value={value}>
             {children}

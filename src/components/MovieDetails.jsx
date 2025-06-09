@@ -3,11 +3,13 @@ import { UseMovieContext } from "../contexts/MovieContext";
 
 function MovieDetails({movie}){
     const {isFavorite, addToFavorite, removeFromFavorite} = UseMovieContext();
+
     const favorite = isFavorite(movie.id);
-    function onFavoriteClick(e){ 
+
+    function onFavoriteClick(e){
         e.preventDefault();
-        if(favorite) { removeFromFavorite(movie.id) }
-        else { addToFavorite(movie) }
+        if(favorite) removeFromFavorite(movie.id)
+        else addToFavorite(movie)
      }
 
     return (
@@ -22,7 +24,7 @@ function MovieDetails({movie}){
             <div className="movie-info">
                 <h3>{movie.title}</h3>
                 <p>{movie.release_date?.split("-")[0]}</p>
-                <h4>{movie.genre}</h4>
+                <h4>{movie.without_genres}</h4>
             </div>
         </div>
     );
