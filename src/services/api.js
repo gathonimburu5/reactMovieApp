@@ -1,5 +1,6 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
+
 const API_OPTIONS = {
     method: "GET",
     headers: {
@@ -15,7 +16,7 @@ export const getPopularMovies = async () => {
     //const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
     const response = await fetch(ENDPOINT_URL, API_OPTIONS);
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     return data.results;
 };
 

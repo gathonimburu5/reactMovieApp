@@ -1,4 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
+import { getFavoriteMovies, createFavoriteMovie, removeFavoriteMovie } from "../services/appWrite";
 
 const MovieContext = createContext();
 
@@ -8,19 +9,30 @@ export const MovieProvider = ({children}) => {
     const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
-        const storedFavorite = localStorage.getItem("favorites");
-        if(storedFavorite) setFavorites(JSON.parse(storedFavorite))
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem('favorites', JSON.stringify(favorites))
+        const fetchFavoriteMovie = async () => {
+            try{
+                const favoriteDoc = await getFavoriteMovies();
+                setFavorites(favoriteDoc);
+            }catch(error){
+                console.log("error fetching favorite movies", error);
+            }
+        }
+        // const storedFavorite = localStorage.getItem("favorites");
+        // if(storedFavorite) setFavorites(JSON.parse(storedFavorite))
+        fetchFavoriteMovie();
     }, [favorites]);
 
-    const addToFavorite = (movie) => {
+    // useEffect(() => {
+    //     localStorage.setItem('favorites', JSON.stringify(favorites))
+    // }, [favorites]);
+
+    const addToFavorite = async (movie) => {
+        await createFavoriteMovie(movie)
         setFavorites(prev => [...prev, movie]);
     }
 
-    const removeFromFavorite = (movieId) => {
+    const removeFromFavorite = async (movieId) => {
+        await removeFavoriteMovie(movieId)
         setFavorites(prev => prev.filter(movie => movie.id !== movieId));
     }
 
