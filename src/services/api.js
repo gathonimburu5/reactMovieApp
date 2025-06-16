@@ -16,7 +16,6 @@ export const getPopularMovies = async () => {
     //const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
     const response = await fetch(ENDPOINT_URL, API_OPTIONS);
     const data = await response.json();
-    //console.log(data);
     return data.results;
 };
 
@@ -33,6 +32,5 @@ export const searchMovies = async (query) => {
 export const getDiscoveredMovies = async () => {
     const response = await fetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}`)
     const data = await response.json();
-    //console.log(data);
     return data.results;
 }

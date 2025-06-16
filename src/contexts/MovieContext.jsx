@@ -17,14 +17,24 @@ export const MovieProvider = ({children}) => {
                 console.log("error fetching favorite movies", error);
             }
         }
+
         // const storedFavorite = localStorage.getItem("favorites");
         // if(storedFavorite) setFavorites(JSON.parse(storedFavorite))
         fetchFavoriteMovie();
-    }, [favorites]);
+    }, []);
 
-    // useEffect(() => {
-    //     localStorage.setItem('favorites', JSON.stringify(favorites))
-    // }, [favorites]);
+    useEffect(() => {
+        //localStorage.setItem('favorites', JSON.stringify(favorites))
+
+        const getFavorite = async () => {
+            try{
+                await getFavoriteMovies();
+            }catch(error){
+                console.log("error fetching favorite movies", error);
+            }
+        }
+        getFavorite()
+    }, [favorites]);
 
     const addToFavorite = async (movie) => {
         await createFavoriteMovie(movie)
@@ -33,7 +43,9 @@ export const MovieProvider = ({children}) => {
 
     const removeFromFavorite = async (movieId) => {
         await removeFavoriteMovie(movieId)
-        setFavorites(prev => prev.filter(movie => movie.id !== movieId));
+        //setFavorites(prev => prev.filter(movie => movie.id !== movieId));
+        const updatedFavorites = await getFavoriteMovies();
+        setFavorites(updatedFavorites)
     }
 
     const isFavorite = (movieId) => {
