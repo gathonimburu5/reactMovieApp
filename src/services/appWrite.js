@@ -23,7 +23,8 @@ export const createFavoriteMovie = async (movie) => {
     try{
         const result = await database.listDocuments(DATABASE_ID, FAVORITE_ID, [Query.equal("movie_id", movie.id)]);
         if(result.documents.length > 0){
-            removeFavoriteMovie(movie.id);
+            const doc = result.documents[0];
+            await database.updateDocument(DATABASE_ID, FAVORITE_ID, doc.$id, {is_favorite: true})
         }else{
             await database.createDocument(DATABASE_ID, FAVORITE_ID, ID.unique(), {
                 title: movie.title,
