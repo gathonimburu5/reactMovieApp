@@ -24,7 +24,7 @@ const MovieDetails = ({movie}) => {
             <div className="movie-info">
                 <h3> {movie.title} </h3>
                 <h5> ⭐ {movie.vote_average ? movie.vote_average : "N/A"} <span>.</span> {movie.original_language} <span>.</span> {movie.release_date ? movie.release_date.split("-")[0] : "N/A"} </h5>
-                <p> {movie.overview} </p>
+                {/* <p> {movie.overview} </p> */}
             </div>
         </div>
     );
