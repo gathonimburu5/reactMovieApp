@@ -54,6 +54,7 @@ const Home = () => {
                 <button type="submit" className="search-button">search</button>
             </form>
             { error && <div className="error-message"> {error} </div> }
+            <h4 className="p-0 m-0 text-lg font-bold">Your Popular Movies</h4>
             {loading ? (<div className="loading"> Loading.... </div>) :(
                 <div className="movies-grid">
                     {movies.map((movie) => (<MovieDetails movie={movie} key={movie.id} />))}

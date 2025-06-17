@@ -7,7 +7,7 @@ const Favorite = () => {
     if(favorites){
         return(
             <div className="favorites">
-                <h4>Your Favorites Movies</h4>
+                <h4 className="p-0 m-0 text-lg font-bold">Your Favorites Movies</h4>
                 <div className="movies-grid">
                     {favorites.map((movie) => (<MovieDetails movie={movie} key={movie.$id || movie.movie_id} />))}
                 </div>
@@ -16,8 +16,8 @@ const Favorite = () => {
     }
     return(
         <div className="favorites-empty">
-            <h4>No Favorite Movie Yet</h4>
-            <p>start adding favorite movies and they will appear here!</p>
+            <h4 className="text-lg font-bold text-red-600">No Favorite Movie Yet</h4>
+            <p className="text-lg">start adding favorite movies and they will appear here!</p>
         </div>
     );
 }
