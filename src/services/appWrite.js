@@ -53,6 +53,6 @@ export const removeFavoriteMovie = async (movieId) => {
             console.log(`No favorite found with movie_id: ${movieId}`);
         }
     }catch(error){
-        console.log(error)
+        console.log(`an error occured: ${error}`)
     }
 }
