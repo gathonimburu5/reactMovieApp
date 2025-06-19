@@ -12,6 +12,7 @@ export const MovieProvider = ({children}) => {
         const fetchFavoriteMovie = async () => {
             try{
                 const favoriteDoc = await getFavoriteMovies();
+                console.log(favoriteDoc);
                 setFavorites(favoriteDoc);
             }catch(error){
                 console.log("error fetching favorite movies", error);
@@ -42,6 +43,7 @@ export const MovieProvider = ({children}) => {
     }
 
     const removeFromFavorite = async (movieId) => {
+        //console.log(movieId);
         await removeFavoriteMovie(movieId)
         //setFavorites(prev => prev.filter(movie => movie.id !== movieId));
         const updatedFavorites = await getFavoriteMovies();
@@ -49,7 +51,7 @@ export const MovieProvider = ({children}) => {
     }
 
     const isFavorite = (movieId) => {
-        return favorites.some(movie => movie.id === movieId);
+        return favorites.some(movie => movie.$id === movieId);
     }
 
     const value = {favorites, addToFavorite, removeFromFavorite, isFavorite}

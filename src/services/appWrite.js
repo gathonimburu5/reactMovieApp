@@ -46,8 +46,10 @@ export const createFavoriteMovie = async (movie) => {
 export const removeFavoriteMovie = async (movieId) => {
     try{
         const result = await database.listDocuments(DATABASE_ID, FAVORITE_ID, [Query.equal("movie_id", movieId)]);
+        console.log(result);
         if(result.documents.length > 0){
             const doc = result.documents[0];
+            console.log(DATABASE_ID, FAVORITE_ID, doc.$id);
             await database.updateDocument(DATABASE_ID, FAVORITE_ID, doc.$id, {is_favorite: false})
         }else {
             console.log(`No favorite found with movie_id: ${movieId}`);

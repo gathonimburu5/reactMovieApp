@@ -9,7 +9,7 @@ const Favorite = () => {
             <div className="favorites">
                 <h4 className="p-0 m-0 text-lg font-bold">Your Favorites Movies</h4>
                 <div className="movies-grid">
-                    {favorites.map((movie) => (<MovieDetails movie={movie} key={movie.$id || movie.movie_id} />))}
+                    {favorites.map((movie) => (<MovieDetails movie={movie} key={movie.$id} />))}
                 </div>
             </div>
         );
